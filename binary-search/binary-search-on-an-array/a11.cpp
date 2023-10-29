@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int binary_search(int A[], int N, int X) {
@@ -16,6 +17,8 @@ int main() {
   int N, X, A[100000];
   cin >> N >> X;
   for (int i = 0; i < N; i++) cin >> A[i];
+
+  sort(A, A + N); // O(N log N): A[0]からA[N-1]を昇順にソート
 
   int ans = binary_search(A, N, X);
   cout << ans << endl;
