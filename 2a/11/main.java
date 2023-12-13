@@ -23,9 +23,9 @@ class main {
 
 
 // 課題2 力まかせ法 文字列s1から文字列s2を探索
-		// BFmatch b = new BFmatch();
-		// idx = b.bfmatch(txt, pat);
-		// b.printBF();
+		BFmatch b = new BFmatch();
+		idx = b.bfmatch(txt, pat);
+		b.printBF();
 // 課題2 力まかせ法 文字列s1から文字列s2を探索 (ここまで)
 
 // 課題2を取り組む際は以下はコメントアウト
