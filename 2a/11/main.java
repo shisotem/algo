@@ -30,9 +30,9 @@ class main {
 
 // 課題2を取り組む際は以下はコメントアウト
 // 課題3 KMP法 文字列s1から文字列s2を探索
-		// KMPmatch k = new KMPmatch();
-		// idx = k.kmpmatch(txt, pat);
-		// k.printKMP();
+		KMPmatch k = new KMPmatch();
+		idx = k.kmpmatch(txt, pat);
+		k.printKMP();
 // 課題3 KMP法 文字列s1から文字列s2を探索 (ここまで)
 
 // 課題2・3を取り組む際は以下はコメントアウト

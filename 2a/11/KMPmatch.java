@@ -14,30 +14,32 @@ class KMPmatch {
 		this.pat = pat;
 
 // 以下、編集ゾーン KMP法での初期設定 配列next[]の計算
-//
-//
-//
-//
-//
-//
-//
-//
-//
+    int n = txt.length();
+    int m = pat.length();
+    int[] next = new int[m + 1];
+    
+		int j = -1;
+	  for (int i = 0; i < m; i++) {
+		  next[i] = j;
+			while (j >= 0 && pat.charAt(i) != pat.charAt(j)) j = next[j];
+			j++;
+	  } 
 // 以下、編集ゾーン KMP法での初期設定 配列next[]の計算 (ここまで)
 
 		for (int i = 0; i < m; ++i)  System.out.println(i + ":" + next[i]); // シフト量のチェック
 
 // 以下、編集ゾーン クヌース-モリス-プラッツ法 実装部分
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+		j = 0;
+		for (int i = 0; i < n; i++) {
+			while (j >= 0 && txt.charAt(i) != pat.charAt(j)) j = next[j];
+			if (j == m - 1) {
+				idx = i - m + 1;
+				return idx;
+			}
+			j++;
+		}
+		idx = -1;
+		return idx;
 // 以下、編集ゾーン クヌース-モリス-プラッツ法 実装部分 (ここまで)
 
 	}
