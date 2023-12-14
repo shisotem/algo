@@ -37,9 +37,9 @@ class main {
 
 // 課題2・3を取り組む際は以下はコメントアウト
 // 課題4 BM法 文字列s1から文字列s2を探索
-		// BMmatch bm = new BMmatch();
-		// idx = bm.bmmatch(txt, pat);
-		// bm.printBM();
+		BMmatch bm = new BMmatch();
+		idx = bm.bmmatch(txt, pat);
+		bm.printBM();
 // 課題4 BM法 文字列s1から文字列s2を探索 (ここまで)
 
 
