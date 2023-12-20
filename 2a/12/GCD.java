@@ -33,11 +33,19 @@ class GCD {
 // 課題4. 
     int[] extended_gcd(int m, int n) {
 	// 編集: 拡張版ユークリッドの互除法を完成させなさい．
-
-
-
-
-
+    int[] a = new int[3];
+    if (n == 0) {
+        a[0] = m;
+        a[1] = 1;
+        a[2] = 0;
+        return a;
+    } else {
+        int[] b = extended_gcd(n, m % n);
+        a[0] = b[0];
+        a[1] = b[2];
+        a[2] = b[1] - (m / n) * b[2];
+        return a;
+    }
 
 	// 編集(ここまで): 拡張版ユークリッドの互除法を完成させなさい．
     }
