@@ -7,23 +7,30 @@ class SATsolver {
 		// 状態がnull（矛盾状態）の時は充足不可能なのでnullを返す
 		// 編集: stateがnullなら
 		// 編集: nullを戻り値とする．
+		if (state == null) {
+			return null;
+		}
 		
 		System.out.println("solve " + state.formula);
 
 		// 考える節が残っていない場合は終了
 		// 編集: もし考える節がないなら => もしstate.formulaのサイズが0なら
 		// 編集: 戻り値はstate.varsとする
+		if (state.formula.size() == 0) {
+			return state.vars;
+		}
 
 
 		// 式の1つめの節を取り出して，部分問題に分割する．
 		// 編集: state.formula(ListのList)から先頭のリストを１つ取り出して，整数を持つリスト c とする．式の先頭の節に相当．
+		List<Integer> c = state.formula.get(0);
 
-		if ( ) { // 編集: cのsizeが1の場合．(リテラルが１つの場合)
+		if (c.size() == 1) { // 編集: cのsizeが1の場合．(リテラルが１つの場合)
 			State state2 = assign(state, c.get(0), 1); // f(l_1=1) に対応するものをstate2とする
 			// assignは，状態stateのリテラルc.get(0)に値1or0(今回は1）を割り当てて新しい状態(今回はstate 2)を作り返す
 			int[] result = solve(state2); // state2に対してsolveを再帰呼び出し
 			return result; // resultをreturnする
-		} else if ( ) { // 編集: cのsizeが2の場合．(リテラルが２つの場合．)
+		} else if (c.size() == 2) { // 編集: cのsizeが2の場合．(リテラルが２つの場合．)
 			State state2 = assign(state, c.get(0), 1); // f(l_1=1)するものをstate2とする
 			int[] result = solve(state2); // state2に対してsolveを再帰呼び出し
 			if (result != null) { // もし結果がnullではないなら，resultをreturnする．
@@ -35,14 +42,30 @@ class SATsolver {
 		} else { // cのサイズが3以上
 			// 以下は，上の２つを参考に書いてください．
 			// 編集: f(l_1=1) するものをstate2とする
+			State state2 = assign(state, c.get(0), 1);
 			// 編集: state2に対してsolveを再帰呼び出しし，結果をresultに渡す．
+			int[] result = solve(state2);
 			// 編集: もし結果がnullではないなら，resultをreturnする．
+			if (result != null) {
+				return result;
+			}
 			// 編集: f(l_1=0, l_2=1)するものをstate2とする
+			state2 = assign(state, c.get(0), 0);
+			state2 = assign(state2, c.get(1), 1);
 			// 編集: state2に対してsolveを再帰呼び出しし，結果をresultに渡す．
+			result = solve(state2);
 			// 編集: もし結果がnullではないなら，resultをreturnする．
+			if (result != null) {
+				return result;
+			}
  			// 編集: f(l_1=0, l_2=0, l_3=1)するものをstate2とする
+			state2 = assign(state, c.get(0), 0);
+			state2 = assign(state2, c.get(1), 0);
+			state2 = assign(state2, c.get(2), 1);
 			// 編集: state2に対してsolveを再帰呼び出しし，結果をresultに渡す．
+			result = solve(state2);
 			// 編集: resultをreturnする
+			return result;
 		}
 	}
 
