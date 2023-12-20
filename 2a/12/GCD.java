@@ -19,9 +19,11 @@ class GCD {
 // 課題3. 
     int recursion_gcd(int m, int n) {
 	// 編集: 再帰を使ってユークリッドの互除法を完成させなさい．
-
-
-
+    if (n == 0) {
+        return m;
+    } else {
+        return recursion_gcd(n, m % n);
+    }
 
 
 	// 編集(ここまで): 再帰を使ってユークリッドの互除法を完成させなさい． 
