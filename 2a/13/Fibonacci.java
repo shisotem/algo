@@ -14,10 +14,7 @@ class Fibonacci {
 // 課題2
     int fibonacciDynamic(int n) { // フィボナッチ数列を求めるアルゴリズム
 		// 動的計画法を使ったフィボナッチ数列のアルゴリズムを完成させなさい．
-      if (n == 0 || n == 1) {
-        return 1;
-      }
-      int[] fib = new int[n + 1];
+      int[] fib = new int[1000];
       fib[0] = 1;
       fib[1] = 1;
       for (int i = 2; i <= n; i++) {
