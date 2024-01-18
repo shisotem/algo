@@ -1,21 +1,36 @@
+import java.io.*;
+import java.util.*;
 
-class main_Kruskal {
-  public static void main(String[] args) 
+public class main_Kruskal {
+    public static void main(String[] args) {
+        try {
+            File file = new File("data.txt");
+            Scanner scanner = new Scanner(file);
+            List<KruskalGraph.Edge> edges = new ArrayList<>();
+            int maxVertex = 0;
+            while (scanner.hasNextLine()) {
+                String[] data = scanner.nextLine().split(",");
+                KruskalGraph.Edge edge = new KruskalGraph(0, 0).new Edge();
+                edge.src = Integer.parseInt(data[0].trim());
+                edge.dest = Integer.parseInt(data[1].trim());
+                edge.weight = Integer.parseInt(data[2].trim());
+                edges.add(edge);
+                maxVertex = Math.max(maxVertex, Math.max(edge.src, edge.dest));
+            }
+            scanner.close();
 
-// data.txtを読み込む部分を加筆してください．
+            int V = maxVertex + 1;
+            int E = edges.size();
+            KruskalGraph graph = new KruskalGraph(V, E);
 
+            for (int i = 0; i < E; i++) {
+                graph.edge[i] = edges.get(i);
+            }
 
-      KruskalGraph G=new KruskalGraph(numv, nume); // numv: 頂点数, nume: 辺数
-      // 以下は src0, dest0, weight0をArrayList<Integer>とし，読み込んだデータを格納している例．
-
-      for (int i = 0; i < nume; ++i) {
-        G.edge[i].src = src0.get(i);
-        G.edge[i].dest = dest0.get(i);
-        G.edge[i].weight = weight0.get(i);
-      }
-
-     G.KruskalAlgo();
-
-
-  }
+            graph.KruskalMST();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: File not found");
+            e.printStackTrace();
+        }
+    }
 }
